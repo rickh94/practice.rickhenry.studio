@@ -1,0 +1,59 @@
+{% load static %}
+<main class="py-10 px-4 min-h-full container mx-auto flex-1"
+      id="main-content">
+    <script id="passkey-data"
+            data-start-registration-endpoint="{% url 'start_passkey_registration' %}"
+            data-finish-registration-endpoint="{% url 'finish_passkey_registration' %}"></script>
+    <div class="overflow-hidden bg-white border-2 border-chocolatecosmos-400 shadow max-w-4xl mx-auto">
+        <div class="px-4 py-6 sm:px-6">
+            <h3 class="text-4xl tracking-wide text-chocolatecosmos-400 font-bold">User Profile</h3>
+        </div>
+        <div class="border-t border-chocolatecosmos-400/80">
+            <dl class="divide-y divide-chocolatecosmos-400/50">
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400/80">Name</dt>
+                    <dt class="mt-1 text-sm font-semibold text-chocolatecosmos-400 sm:col-span-2 sm:mt-0">
+                        {{ request.user.first_name }} {{ request.user.last_name }}
+                    </dt>
+                </div>
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400/80">Username</dt>
+                    <dt class="mt-1 text-sm font-semibold text-chocolatecosmos-400 sm:col-span-2 sm:mt-0">{{ request.user.username }}</dt>
+                </div>
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400/80">Email</dt>
+                    <dt class="mt-1 text-sm font-semibold text-chocolatecosmos-400 sm:col-span-2 sm:mt-0">{{ request.user.email }}</dt>
+                </div>
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400">Password</dt>
+                    <dt class="mt-1 text-sm font-semibold text-black sm:col-span-2 sm:mt-0 py-2">
+                        <a href="{% url 'password_reset' %}"
+                           class="ml-2 bg-atomictangerine-200 px-2 py-1 text-xl font-bold border-black border-2 hover:bg-atomictangerine-400 focus:bg-atomictangerine-400 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chocolatecosmos-400">
+                            Reset Your Password
+                        </a>
+                    </dt>
+                </div>
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400">Passkey</dt>
+                    <dt class="mt-1 text-sm font-semibold text-black sm:col-span-2 sm:mt-0 py-2">
+                        <button type="button"
+                                x-data
+                                @click="startRegistration()"
+                                class="ml-2 bg-pictonblue-300 px-2 py-1 text-xl font-bold border-black border-2 hover:bg-pictonblue-500 focus:pictonblue-500 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chocolatecosmos-400">
+                            Register Device
+                        </button>
+                    </dt>
+                </div>
+                <div class="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-lg font-semibold text-chocolatecosmos-400">Logout</dt>
+                    <dt class="mt-1 text-sm font-semibold text-black sm:col-span-2 sm:mt-0 py-2">
+                        <a href="{% url 'logout' %}"
+                           class="ml-2 bg-bittersweet-300 px-2 py-1 text-xl font-bold border-black border-2 hover:bg-bittersweet-500 focus:bg-bittersweet-500 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chocolatecosmos-400">
+                            Logout
+                        </a>
+                    </dt>
+                </div>
+            </dl>
+        </div>
+    </div>
+</main>
