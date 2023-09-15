@@ -32,4 +32,5 @@ urlpatterns = [
     path("", include("core.urls")),
     path("auth/", include("django.contrib.auth.urls")),
     path("pauth/", include("passkey_auth.urls")),
+    path("sheets/", include("sheets.urls")),
 ]

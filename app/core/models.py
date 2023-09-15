@@ -7,6 +7,10 @@ class Student(models.Model):
     user = models.OneToOneField(
         get_user_model(), on_delete=models.CASCADE, null=True, blank=True
     )
+    teacher = models.ForeignKey(
+        "core.Teacher",
+        on_delete=models.CASCADE,
+    )
 
 
 class Teacher(models.Model):
